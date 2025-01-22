@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
-import { z } from "zod";
+import { title } from "process";
+import { date, string, z } from "zod";
 
 export const valUserCreate = z.object({
   email: z.string().email(),
@@ -13,6 +14,7 @@ export const valUserEdit = z.object({
   username: z.string().optional(),
   name: z.string().optional(),
 });
+
 export const valUserLogin = z
   .object({
     email: z.string().email().optional(),
@@ -38,4 +40,14 @@ export const valUserLogin = z
 
 export const valUserRemove = z.object({
   _id: z.string(),
+});
+
+export const valTaskCreate = z.object({
+  title: z.string(),
+  description: z.string(),
+  dateDo: z.date().optional(),
+  CreatedAt: z.date().optional(),
+  _id: z.string(),
+  check: z.boolean().optional(),
+  pepole: z.string().array().optional(),
 });
