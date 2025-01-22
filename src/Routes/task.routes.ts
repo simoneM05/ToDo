@@ -39,7 +39,26 @@ const create: CustomRequest = async (req, res) => {
 };
 
 const edit: CustomRequest = async (req, res) => {};
-const get: CustomRequest = async (req, res) => {};
+const get: CustomRequest = async (req, res) => {
+  try {
+    const { _id }: ITask = req.body;
+    const { Taskid } = req.query;
+    console.log(Taskid);
+
+    const TaskSearch = await Task.findOne({ _id: Taskid, user: _id });
+    if (!TaskSearch) {
+      throw new APIError("Task not found", 404);
+    }
+    res.status(200).json(TaskSearch);
+  } catch (error: unknown) {
+    if (error instanceof APIError) {
+      console.error(error.message);
+      res.status(error.statusCode).json(error.message);
+    } else {
+      res.status(500).json("Error unknow");
+    }
+  }
+};
 const getAll: CustomRequest = async (req, res) => {};
 const remove: CustomRequest = async (req, res) => {};
 const removeAll: CustomRequest = async (req, res) => {};
@@ -48,7 +67,7 @@ const routes = e.Router();
 
 routes.post("/create", authToken, create);
 routes.put("/edit");
-routes.get("/get");
+routes.get("/get", authToken, get);
 routes.get("/getAll");
 routes.delete("/remove");
 routes.delete("/removeAll");
