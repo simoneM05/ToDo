@@ -1,7 +1,7 @@
 import e from "express";
 import mongoose from "mongoose";
-import userRoutes from "./Routes/user.routes.js";
-import taskRoutes from "./Routes/task.routes.js";
+import userRoutes from "./Routers/user.routes.js";
+import taskRoutes from "./Routers/task.routes.js";
 import cors from "cors";
 import { MONGO_URI, PORT } from "./Config/config.js";
 

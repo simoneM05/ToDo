@@ -53,7 +53,6 @@ const create: CustomRequest = async (req, res) => {
   }
 };
 
-///TODO
 const edit: CustomRequest = async (req, res) => {
   try {
     const result = valUserEdit.safeParse(req.body);
@@ -126,7 +125,6 @@ const login: CustomRequest = async (req, res) => {
   }
 };
 
-//TODO
 const remove: CustomRequest = async (req, res) => {
   try {
     const result = valUserRemove.safeParse(req.body);
