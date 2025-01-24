@@ -1,6 +1,6 @@
 import e from "express";
-import userRoutes from "./api/v1/Routers/user.routes.js";
-import taskRoutes from "./api/v1/Routers/task.routes.js";
+import userRoutes from "./api/v1/Routers/user.router.js";
+import taskRoutes from "./api/v1/Routers/task.router.js";
 import cors from "cors";
 import morgan from "morgan";
 import { PORT } from "./api/Config/config.js";

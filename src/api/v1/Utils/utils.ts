@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET, __dirname } from "../../Config/config.js";
-import { IUser } from "../Interfaces/all.type.js";
+import { IUser } from "../Interfaces/interface.js";
 import path from "path";
 import fs from "fs";
 

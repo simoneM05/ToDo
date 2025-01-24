@@ -1,4 +1,4 @@
-import { APIError, CustomRequest, IUser } from "../Interfaces/all.type.js";
+import { APIError, CustomRequest, IUser } from "../Interfaces/interface.js";
 import { User } from "../Models/user.model.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../Utils/utils.js";
@@ -8,6 +8,8 @@ import {
   valUserLogin,
   valUserRemove,
 } from "../Validations/validation.js";
+import axios from "axios";
+import { response } from "express";
 
 export const create: CustomRequest = async (req, res) => {
   try {
@@ -44,7 +46,7 @@ export const create: CustomRequest = async (req, res) => {
       console.error(error.message);
       res.status(error.statusCode).json({ error: error.message });
     } else {
-      res.status(500).json({ msg: "Unknown error" });
+      res.status(500).json({ msg: "internal server error" });
     }
   }
 };
@@ -79,7 +81,7 @@ export const edit: CustomRequest = async (req, res) => {
       console.error(error.message);
       res.status(error.statusCode).json({ error: error.message });
     } else {
-      res.status(500).json({ msg: "Unknown error" });
+      res.status(500).json({ msg: "internal server error" });
     }
   }
 };
@@ -116,7 +118,7 @@ export const login: CustomRequest = async (req, res) => {
 
       res.status(error.statusCode).json({ error: error.message });
     } else {
-      res.status(500).json({ msg: "Unknown error" });
+      res.status(500).json({ msg: "internal server error" });
     }
   }
 };
@@ -132,7 +134,19 @@ export const remove: CustomRequest = async (req, res) => {
         422
       );
     }
-    const { _id } = req.body;
+    const { _id, token } = req.body;
+    const response = await axios.delete(
+      "http://localhost:8080/api/task/removeAll",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response) throw new APIError(`${response
+      
+    }`, 500);
     const removeUser = await User.findByIdAndDelete(_id);
     if (!removeUser) {
       throw new APIError("User not found", 404);
@@ -143,7 +157,7 @@ export const remove: CustomRequest = async (req, res) => {
       console.error(error.message);
       res.status(error.statusCode).json({ error: error.message });
     } else {
-      res.status(500).json({ msg: "Unknown error" });
+      res.status(500).json({ msg: "internal server error" });
     }
   }
 };

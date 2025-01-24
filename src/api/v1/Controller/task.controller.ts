@@ -1,5 +1,5 @@
 import { Task } from "../Models/task.model.js";
-import { APIError, CustomRequest, ITask } from "../Interfaces/all.type.js";
+import { APIError, CustomRequest, ITask } from "../Interfaces/interface.js";
 import { valTaskCreate, valTaskEdit } from "../Validations/validation.js";
 
 export const create: CustomRequest = async (req, res) => {
@@ -35,7 +35,7 @@ export const create: CustomRequest = async (req, res) => {
     }
   }
 };
-//TODO
+
 export const edit: CustomRequest = async (req, res) => {
   const result = valTaskEdit.safeParse(req.body);
   if (!result.success) {

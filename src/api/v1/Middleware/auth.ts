@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../../Config/config.js";
-import { IUser } from "../Interfaces/all.type.js";
+import { IUser } from "../Interfaces/interface.js";
 
 export const authToken: RequestHandler = (req, res, next) => {
   let token = null;
@@ -15,6 +15,7 @@ export const authToken: RequestHandler = (req, res, next) => {
       } else {
         const userId = decoded as IUser;
         req.body._id = userId._id;
+        req.body.token = token;
         next();
       }
     });

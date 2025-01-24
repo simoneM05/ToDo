@@ -1,14 +1,19 @@
 import { Request, Response } from "express";
 import { Document, Types } from "mongoose";
 
-export interface IUser extends Document {
+export interface User extends Document {
   name: string;
+  status: "guest" | "user" | "admin";
   email: string;
   password: string;
   username: string;
+}
+export interface IUser extends User {
   friends: IUser[];
 }
-
+export interface IAdmin extends User {
+  rule: "superUser" | "view" | "edit";
+}
 export interface ITask extends Document {
   title: string;
   description: string;
