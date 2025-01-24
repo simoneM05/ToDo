@@ -1,9 +1,9 @@
-import { NextFunction, Response, Request } from "express";
+import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../Config/config.js";
-import { IUser } from "../types/all.type.js";
+import { JWT_SECRET } from "../../Config/config.js";
+import { IUser } from "../Interfaces/all.type.js";
 
-const authToken = (req: Request, res: Response, next: NextFunction) => {
+export const authToken: RequestHandler = (req, res, next) => {
   let token = null;
   if (req.header("Authorization")) {
     token = req.header("Authorization")!.split(" ")[1];
@@ -22,5 +22,3 @@ const authToken = (req: Request, res: Response, next: NextFunction) => {
     res.status(401).send({ msg: "Token is not supplied" });
   }
 };
-
-export { authToken };

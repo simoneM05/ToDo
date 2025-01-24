@@ -1,8 +1,12 @@
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import path from "path";
 
 dotenv.config();
 
 export const JWT_SECRET: string = process.env.JWT_SECRET!;
 
 export const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
-export const MONGO_URI: string = process.env.MONGO_URI!;
+
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.dirname(__filename);

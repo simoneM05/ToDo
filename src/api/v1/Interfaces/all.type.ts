@@ -1,4 +1,4 @@
-import { Request, Response, RequestHandler, Application } from "express";
+import { Request, Response } from "express";
 import { Document, Types } from "mongoose";
 
 export interface IUser extends Document {
@@ -34,7 +34,6 @@ export class APIError extends Error {
     this.statusCode = statusCode;
     this.details = details;
 
-    // Mantiene il corretto stack trace per l'errore personalizzato
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, this.constructor);
     }

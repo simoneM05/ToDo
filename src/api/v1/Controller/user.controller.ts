@@ -1,5 +1,4 @@
-import { Router } from "express";
-import { APIError, CustomRequest, IUser } from "../types/all.type.js";
+import { APIError, CustomRequest, IUser } from "../Interfaces/all.type.js";
 import { User } from "../Models/user.model.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../Utils/utils.js";
@@ -9,11 +8,8 @@ import {
   valUserLogin,
   valUserRemove,
 } from "../Validations/validation.js";
-import { authToken } from "../Middleware/auth.js";
 
-const routes = Router();
-
-const create: CustomRequest = async (req, res) => {
+export const create: CustomRequest = async (req, res) => {
   try {
     const result = valUserCreate.safeParse(req.body);
     if (!result.success) {
@@ -42,7 +38,7 @@ const create: CustomRequest = async (req, res) => {
       username: username,
     });
     await newUser.save();
-    res.status(200).json({ msg: "User created" });
+    res.status(201).json({ msg: "User created", data: newUser });
   } catch (error: unknown) {
     if (error instanceof APIError) {
       console.error(error.message);
@@ -53,8 +49,7 @@ const create: CustomRequest = async (req, res) => {
   }
 };
 
-///TODO
-const edit: CustomRequest = async (req, res) => {
+export const edit: CustomRequest = async (req, res) => {
   try {
     const result = valUserEdit.safeParse(req.body);
     if (!result.success) {
@@ -78,7 +73,7 @@ const edit: CustomRequest = async (req, res) => {
       email ? (UserSearch.email = email) : null;
     }
     await UserSearch.save();
-    res.status(200).json({ msg: "User updated" });
+    res.status(201).json({ msg: "User updated", data: UserSearch });
   } catch (error: unknown) {
     if (error instanceof APIError) {
       console.error(error.message);
@@ -89,7 +84,7 @@ const edit: CustomRequest = async (req, res) => {
   }
 };
 
-const login: CustomRequest = async (req, res) => {
+export const login: CustomRequest = async (req, res) => {
   try {
     const result = valUserLogin.safeParse(req.body);
     if (!result.success) {
@@ -126,8 +121,7 @@ const login: CustomRequest = async (req, res) => {
   }
 };
 
-//TODO
-const remove: CustomRequest = async (req, res) => {
+export const remove: CustomRequest = async (req, res) => {
   try {
     const result = valUserRemove.safeParse(req.body);
     if (!result.success) {
@@ -143,7 +137,7 @@ const remove: CustomRequest = async (req, res) => {
     if (!removeUser) {
       throw new APIError("User not found", 404);
     }
-    res.status(200).json({ msg: "User delete successfully" });
+    res.status(200).json({ msg: "User delete successfully", data: removeUser });
   } catch (error: unknown) {
     if (error instanceof APIError) {
       console.error(error.message);
@@ -153,11 +147,3 @@ const remove: CustomRequest = async (req, res) => {
     }
   }
 };
-
-routes.post("/create", create);
-routes.post("/login", login);
-
-routes.put("/edit", authToken, edit);
-routes.delete("/delete", authToken, remove);
-
-export default routes;
