@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../Config/config.js";
-import { IUser } from "../types/all.type.js";
+import { JWT_SECRET } from "../../Config/config.js";
+import { IUser } from "../Interfaces/all.type.js";
 
 export const authToken: RequestHandler = (req, res, next) => {
   let token = null;

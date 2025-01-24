@@ -1,12 +1,12 @@
 {
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
     "module": "NodeNext",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "outDir": "./dist",
-    "sourceMap": true,
-    "moduleResolution": "nodenext"
+    "sourceMap": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./package.json", "src/api/Config"],
   "exclude": ["node_modules"]
 }

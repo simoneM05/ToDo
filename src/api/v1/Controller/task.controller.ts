@@ -1,10 +1,8 @@
-import { Router } from "express";
 import { Task } from "../Models/task.model.js";
-import { APIError, CustomRequest, ITask } from "../types/all.type.js";
-import { authToken } from "../Middleware/auth.js";
+import { APIError, CustomRequest, ITask } from "../Interfaces/all.type.js";
 import { valTaskCreate } from "../Validations/validation.js";
 
-const create: CustomRequest = async (req, res) => {
+export const create: CustomRequest = async (req, res) => {
   const result = valTaskCreate.safeParse(req.body);
   if (!result.success) {
     throw new APIError(
@@ -37,11 +35,10 @@ const create: CustomRequest = async (req, res) => {
     }
   }
 };
-
 //TODO
-const edit: CustomRequest = async (req, res) => {};
+export const edit: CustomRequest = async (req, res) => {};
 
-const get: CustomRequest = async (req, res) => {
+export const get: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
     const { Taskid } = req.query;
@@ -61,7 +58,7 @@ const get: CustomRequest = async (req, res) => {
     }
   }
 };
-const getAll: CustomRequest = async (req, res) => {
+export const getAll: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
 
@@ -79,7 +76,7 @@ const getAll: CustomRequest = async (req, res) => {
     }
   }
 };
-const remove: CustomRequest = async (req, res) => {
+export const remove: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
     const { Taskid } = req.query;
@@ -99,7 +96,7 @@ const remove: CustomRequest = async (req, res) => {
     }
   }
 };
-const removeAll: CustomRequest = async (req, res) => {
+export const removeAll: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
 
@@ -117,15 +114,3 @@ const removeAll: CustomRequest = async (req, res) => {
     }
   }
 };
-
-const routes = Router();
-
-
-routes.post("/create", authToken, create);
-routes.put("/edit");
-routes.get("/get", authToken, get);
-routes.get("/getAll", authToken, getAll);
-routes.delete("/remove", authToken, remove);
-routes.delete("/removeAll", authToken, removeAll);
-
-export default routes;
