@@ -22,11 +22,9 @@ export const valUserLogin = z
   })
   .refine(
     (data) => {
-      // Se email è presente, username deve essere assente
       if (data.email && data.username) {
         return false;
       }
-      // Se email non è presente, username deve essere presente
       if (!data.email && !data.username) {
         return false;
       }
@@ -45,6 +43,15 @@ export const valUserRemove = z.object({
 export const valTaskCreate = z.object({
   title: z.string(),
   description: z.string(),
+  dateDo: z.date().optional(),
+  CreatedAt: z.date().optional(),
+  _id: z.string(),
+  check: z.boolean().optional(),
+  pepole: z.string().array().optional(),
+});
+export const valTaskEdit = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
   dateDo: z.date().optional(),
   CreatedAt: z.date().optional(),
   _id: z.string(),

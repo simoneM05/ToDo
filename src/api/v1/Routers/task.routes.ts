@@ -11,7 +11,7 @@ import {
 const routes = Router();
 
 routes.post("/create", authToken, create);
-routes.put("/edit");
+routes.put("/edit", authToken, edit);
 routes.get("/get", authToken, get);
 routes.get("/getAll", authToken, getAll);
 routes.delete("/remove", authToken, remove);
