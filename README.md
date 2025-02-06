@@ -141,7 +141,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST http://localhost:PORT/api/task/create     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT/api/task/create   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+      -H "Content-Type: application/json"     -d '{
       "title": "Fare la spesa",
       "description": "Comprare frutta e verdura",
       "dueDate": "2023-12-31"
@@ -161,7 +162,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X PUT http://localhost:PORT/api/task/edit     -H "Content-Type: application/json"     -d '{
+  curl -X PUT http://localhost:PORT/api/task/edit   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  -H "Content-Type: application/json"     -d '{
       "title": "Fare la spesa aggiornato",
       "description": "Comprare frutta, verdura e carne",
       "dueDate": "2024-01-15"
@@ -184,7 +186,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X GET http://localhost:PORT/api/task/get/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X GET http://localhost:PORT/api/task/get/12345   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`GET /getAll`** - Recupera tutte le attività dell'utente<br>
@@ -212,7 +215,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X GET http://localhost:PORT/api/task/getAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X GET http://localhost:PORT/api/task/getAll   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`DELETE /remove/:id`** - Elimina un'attività<br>
@@ -227,7 +231,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE http://localhost:PORT/api/task/remove/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT/api/task/remove/12345  -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`DELETE /removeAll`** - Elimina tutte le attività dell'utente<br>
@@ -242,7 +247,8 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE http://localhost:PORT/api/task/removeAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT/api/task/removeAll  -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+   -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 ### User Management
