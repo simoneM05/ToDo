@@ -1,6 +1,4 @@
-import { Types } from "mongoose";
-import { title } from "process";
-import { date, string, z } from "zod";
+import { z } from "zod";
 
 export const valUserCreate = z.object({
   email: z.string().email(),

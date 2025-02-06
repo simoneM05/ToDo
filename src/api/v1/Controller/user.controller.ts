@@ -22,6 +22,7 @@ export const create: CustomRequest = async (req, res) => {
         422
       );
     }
+
     const { email, password, username, name }: IUser = req.body;
     const [existEmail, existUsername] = await Promise.all([
       User.findOne({ email }),
@@ -144,9 +145,7 @@ export const remove: CustomRequest = async (req, res) => {
       }
     );
 
-    if (!response) throw new APIError(`${response
-      
-    }`, 500);
+    if (!response) throw new APIError(`${response}`, 500);
     const removeUser = await User.findByIdAndDelete(_id);
     if (!removeUser) {
       throw new APIError("User not found", 404);

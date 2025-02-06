@@ -1,55 +1,103 @@
-# ToDo
-
-> project URL: https://roadmap.sh/projects/todo-list-api
-
 # To-Do List API
 
-This API allows a simple d To-Do List application to be managed, enabling:
+> Project URL: [To-Do List API](https://roadmap.sh/projects/todo-list-api)
 
-- create user,login user with valid user and generate a **token** for this user
+Questa API consente di gestire un'applicazione To-Do List, permettendo di:
 
-- create, delete, read, update task for one user used token for validate
+- Creare un utente, effettuare il login con credenziali valide e generare un **token** per l'autenticazione.
+- Creare, eliminare, leggere e aggiornare attività per un utente autenticato.
 
-# Tecnologie utilizzate
+## Tecnologie Utilizzate
 
-- auth: Token jwt
-- log: morgan
-- input validation: zoi
-- Backend: Node.js con Express.js
-- Database: MongoDB
-- language: Typescript (ES6)
+- **Autenticazione**: JSON Web Token (JWT)
+- **Logging**: Morgan
+- **Validazione Input**: Joi
+- **Backend**: Node.js con Express.js
+- **Database**: MongoDB
+- **Linguaggio**: TypeScript (ES6)
+- **Containerizzazione**: Docker
 
-## tabella dei contenuti
+## Tabella dei Contenuti
 
-- [installation](#installation)
-- [Usage](#Usage)
+- [Installazione](#installazione)
+- [Utilizzo](#utilizzo)
+- [Configurazione con Docker](#configurazione-con-docker)
+- [API Endpoints](#api-endpoints)
 
-## installation
+## Installazione
 
-Instructions on how to install and set up your project. For example:
+Eseguire i seguenti comandi per clonare il repository e installare le dipendenze:
 
 ```bash
 git clone https://github.com/Simone-Martino/ToDo.git
+cd ToDo
 npm install
 ```
 
-# Usage
+## Utilizzo
 
-## Setup
+### Configurazione
 
-use example.env for set your .env file
+Usare il file `example.env` come riferimento per configurare le variabili d'ambiente in `.env`.
 
-### start command
+### Comandi di Avvio
 
-developer mood:
+Modalità sviluppo:
 
 ```bash
-npm dev
+npm run dev
 ```
 
-start server:
+Avvio del server in produzione:
 
 ```bash
+npm run build
 npm start
-npm tsc
 ```
+
+## Configurazione con Docker
+
+### Requisiti
+
+- Docker installato sul sistema
+
+### Build dell'Immagine
+
+Eseguire il comando seguente per costruire l'immagine Docker:
+
+```bash
+docker build -t todo-api .
+```
+
+### Avvio del Container
+
+```bash
+docker run -d -p 3000:3000 --env-file .env --name todo-api todo-api
+```
+
+Il server sarà accessibile su `http://localhost:3000`.
+
+### Stop e Rimozione del Container
+
+```bash
+docker stop todo-api
+docker rm todo-api
+```
+
+## API Endpoints
+
+### Task Management
+
+- `POST /create` - Crea una nuova attività
+- `PUT /edit` - Modifica un'attività esistente
+- `GET /get` - Recupera una singola attività
+- `GET /getAll` - Recupera tutte le attività dell'utente
+- `DELETE /remove` - Elimina un'attività
+- `DELETE /removeAll` - Elimina tutte le attività dell'utente
+
+### User Management
+
+- `POST /create` - Registra un nuovo utente
+- `POST /login` - Effettua il login e restituisce un token JWT
+- `PUT /edit` - Modifica i dati dell'utente
+- `DELETE /delete` - Elimina l'utente

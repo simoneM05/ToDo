@@ -4,7 +4,7 @@
     "module": "NodeNext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "sourceMap": true
   },
   "include": ["src/**/*", "./package.json", "src/api/Config"],
