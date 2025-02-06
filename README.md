@@ -23,22 +23,22 @@ Questa API consente di gestire un'applicazione To-Do List, con funzionalità per
 
 ## Tabella dei Contenuti
 
-- [Installazione](#installazione)
-- [Utilizzo](#utilizzo)
-  - [Configurazione](#configurazione)
-  - [Comandi di Avvio](#comandi-di-avvio)
-- [Configurazione con Docker](#configurazione-con-docker)
-  - [Requisiti](#requisiti)
-  - [Build dell'Immagine](#build-dellimmagine)
-  - [Avvio del Container](#avvio-del-container)
-  - [Stop e Rimozione del Container](#stop-e-rimozione-del-container)
-- [API Endpoints](#api-endpoints)
+- [Installazione🛠️](#installazione🛠️)
+- [Utilizzo⚙️](#utilizzo⚙️)
+  - [Configurazione🛠️](#configurazione🛠️)
+  - [Comandi di Avvio▶️](#comandi-di-avvio▶️)
+- [Configurazione con Docker 🐳](#configurazione-con-docker🐳)
+  - [Requisiti📋](#requisiti📋)
+  - [Build dell'Immagine🖼️](#build-dellimmagine🖼️)
+  - [Avvio del Container🚀](#avvio-del-container🚀)
+  - [Stop e Rimozione del Container🛑](#stop-e-rimozione-del-container🛑)
+- [API Endpoints 🌐](#api-endpoints🌐)
   - [Task Management](#task-Management-🔒)
   - [User Management](#user-management)
 
 ---
 
-## Installazione
+## Installazione🛠️
 
 Eseguire i seguenti comandi per clonare il repository e installare le dipendenze:
 
@@ -63,13 +63,13 @@ Se usi **yarn**:
 yarn install --production
 ```
 
-## Utilizzo
+## Utilizzo⚙️
 
-### Configurazione
+### Configurazione🛠️
 
 Usare il file `example.env` come riferimento per configurare le variabili d'ambiente in `.env`.
 
-### Comandi di Avvio
+### Comandi di Avvio▶️
 
 #### Modalità sviluppo:
 
@@ -90,13 +90,13 @@ npm run build
 npm start
 ```
 
-## Configurazione con Docker
+## Configurazione con Docker 🐳
 
-### Requisiti
+### Requisiti📋
 
 - Docker installato sul sistema
 
-### Build dell'Immagine
+### Build dell'Immagine🖼️
 
 Eseguire il comando seguente per costruire l'immagine Docker:
 
@@ -104,7 +104,7 @@ Eseguire il comando seguente per costruire l'immagine Docker:
 docker build -t todo-api .
 ```
 
-### Avvio del Container
+### Avvio del Container🚀
 
 ```bash
 docker run -d -p 3000:3000 --env-file .env --name todo-api todo-api
@@ -112,14 +112,14 @@ docker run -d -p 3000:3000 --env-file .env --name todo-api todo-api
 
 Il server sarà accessibile su `http://localhost:3000`.
 
-### Stop e Rimozione del Container
+### Stop e Rimozione del Container🛑
 
 ```bash
 docker stop todo-api
 docker rm todo-api
 ```
 
-## API Endpoints
+## API Endpoints🌐
 
 **⚠️ Gli endpoint con 🔒 richiedono un token JWT generato durante il login.**
 
