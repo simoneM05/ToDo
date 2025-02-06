@@ -1,6 +1,6 @@
 # To-Do List API
 
-**Project URL:** [To-Do List API](https://github.com/Simone-Martino/ToDo)
+**Project URL:** [To-Do List API](http://localhost:PORTSimone-Martino/ToDo)
 
 Questa API consente di gestire un'applicazione To-Do List, con funzionalità per:
 
@@ -43,7 +43,7 @@ Questa API consente di gestire un'applicazione To-Do List, con funzionalità per
 Eseguire i seguenti comandi per clonare il repository e installare le dipendenze:
 
 ```bash
-git clone https://github.com/Simone-Martino/ToDo.git
+git clone http://localhost:PORTSimone-Martino/ToDo.git
 cd ToDo
 ```
 
@@ -141,7 +141,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST https://example.com/api/task/create     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT   /api/task/create     -H "Content-Type: application/json"     -d '{
       "title": "Fare la spesa",
       "description": "Comprare frutta e verdura",
       "dueDate": "2023-12-31"
@@ -161,7 +161,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X PUT https://example.com/api/task/edit     -H "Content-Type: application/json"     -d '{
+  curl -X PUT http://localhost:PORT/api/task/edit     -H "Content-Type: application/json"     -d '{
       "title": "Fare la spesa aggiornato",
       "description": "Comprare frutta, verdura e carne",
       "dueDate": "2024-01-15"
@@ -184,7 +184,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X GET https://example.com/api/task/get/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X GET http://localhost:PORT/api/task/get/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`GET /getAll`** - Recupera tutte le attività dell'utente<br>
@@ -212,7 +212,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X GET https://example.com/api/task/getAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X GET http://localhost:PORT/api/task/getAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`DELETE /remove/:id`** - Elimina un'attività<br>
@@ -227,7 +227,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE https://example.com/api/task/remove/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT /api/task/remove/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`DELETE /removeAll`** - Elimina tutte le attività dell'utente<br>
@@ -242,7 +242,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE https://example.com/api/task/removeAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT /api/task/removeAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 ### User Management
@@ -264,7 +264,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST https://example.com/api/user/create     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT   /api/user/create     -H "Content-Type: application/json"     -d '{
       "name": "john",
       "email": "john@example.com",
       "password": "password123",
@@ -293,7 +293,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST https://example.com/api/user/login     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT   /api/user/login     -H "Content-Type: application/json"     -d '{
       "email": "john@example.com",
       "password": "password123"
     }'
@@ -312,7 +312,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X PUT https://example.com/api/user/edit     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"     -H "Content-Type: application/json"     -d '{
+  curl -X PUT http://localhost:PORT/api/user/edit     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"     -H "Content-Type: application/json"     -d '{
       "username": "john_doe_updated",
       "email": "john_new@example.com"
     }'
@@ -329,7 +329,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE https://example.com/api/user/delete     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT /api/user/delete     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 ## Miglioramenti Futuri
