@@ -141,7 +141,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST http://localhost:PORT   /api/task/create     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT/api/task/create     -H "Content-Type: application/json"     -d '{
       "title": "Fare la spesa",
       "description": "Comprare frutta e verdura",
       "dueDate": "2023-12-31"
@@ -227,7 +227,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE http://localhost:PORT /api/task/remove/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT/api/task/remove/12345     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 - **`DELETE /removeAll`** - Elimina tutte le attività dell'utente<br>
@@ -242,7 +242,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE http://localhost:PORT /api/task/removeAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT/api/task/removeAll     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 ### User Management
@@ -264,7 +264,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST http://localhost:PORT   /api/user/create     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT/api/user/create     -H "Content-Type: application/json"     -d '{
       "name": "john",
       "email": "john@example.com",
       "password": "password123",
@@ -293,7 +293,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X POST http://localhost:PORT   /api/user/login     -H "Content-Type: application/json"     -d '{
+  curl -X POST http://localhost:PORT/api/user/login     -H "Content-Type: application/json"     -d '{
       "email": "john@example.com",
       "password": "password123"
     }'
@@ -329,7 +329,7 @@ docker rm todo-api
   **Comando curl:**
 
   ```bash
-  curl -X DELETE http://localhost:PORT /api/user/delete     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+  curl -X DELETE http://localhost:PORT/api/user/delete     -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
   ```
 
 ## Miglioramenti Futuri
