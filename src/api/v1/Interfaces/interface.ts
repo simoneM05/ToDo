@@ -17,7 +17,7 @@ export interface IAdmin extends User {
 export interface ITask extends Document {
   title: string;
   description: string;
-  dateDo: Date;
+  dueDate: Date;
   CreatedAt?: Date;
   user: IUser["_id"];
   check?: boolean;

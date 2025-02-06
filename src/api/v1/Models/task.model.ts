@@ -4,7 +4,7 @@ import { ITask } from "../Interfaces/interface.js";
 const TaskSchema = new Schema<ITask>({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  dateDo: { type: Date, default: null },
+  dueDate: { type: Date, default: null },
   CreatedAt: { type: Date, default: Date.now },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   pepole: [{ type: Schema.Types.ObjectId, ref: "User" }],

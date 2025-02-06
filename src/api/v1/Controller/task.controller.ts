@@ -12,12 +12,12 @@ export const create: CustomRequest = async (req, res) => {
       422
     );
   }
-  const { title, description, dateDo, _id }: ITask = req.body;
+  const { title, description, dueDate, _id }: ITask = req.body;
 
   const NewTask = new Task({
     title: title,
     description: description,
-    dateDo: dateDo,
+    dateDo: dueDate,
     user: _id,
   });
   if (!NewTask) {
@@ -46,9 +46,10 @@ export const edit: CustomRequest = async (req, res) => {
       422
     );
   }
-  const { title, description, check, pepole, dateDo, _id }: ITask = req.body;
-  const { Taskid } = req.query;
-  const TaskSearch = await Task.findOne({ user: _id, _id: Taskid });
+  const { title, description, check, pepole, dueDate, _id }: ITask = req.body;
+  const { id } = req.params;
+
+  const TaskSearch = await Task.findOne({ user: _id, _id: id });
   if (!TaskSearch) {
     throw new APIError("Task not found", 404);
   }
@@ -57,7 +58,7 @@ export const edit: CustomRequest = async (req, res) => {
     description ? (TaskSearch.description = description) : null;
     check ? (TaskSearch.check = check) : null;
     pepole ? (TaskSearch.pepole = pepole) : null;
-    dateDo ? (TaskSearch.dateDo = dateDo) : null;
+    dueDate ? (TaskSearch.dueDate = dueDate) : null;
   }
   TaskSearch.save();
   res.status(200).json({ msg: "Task edit succesfull", task: TaskSearch });
@@ -75,10 +76,9 @@ export const edit: CustomRequest = async (req, res) => {
 export const get: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
-    const { Taskid } = req.query;
-    console.log(Taskid);
+    const { id } = req.params;
 
-    const TaskSearch = await Task.findOne({ _id: Taskid, user: _id });
+    const TaskSearch = await Task.findOne({ _id: id, user: _id });
     if (!TaskSearch) {
       throw new APIError("Task not found", 404);
     }
@@ -113,7 +113,7 @@ export const getAll: CustomRequest = async (req, res) => {
 export const remove: CustomRequest = async (req, res) => {
   try {
     const { _id }: ITask = req.body;
-    const { Taskid } = req.query;
+    const { Taskid } = req.params;
     console.log(Taskid);
 
     const TaskSearch = await Task.deleteOne({ _id: Taskid, user: _id });
