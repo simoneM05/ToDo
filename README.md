@@ -1,5 +1,4 @@
 # To-Do List API
-[![Shields.io badge for the latest version of good-first-issue](https://img.shields.io/npm/v/good-first-issue/latest.svg)](https://www.npmjs.com/package/good-first-issue)
 **Project URL:** [To-Do List API](http://localhost:PORTSimone-Martino/ToDo)
 
 Questa API consente di gestire un'applicazione To-Do List, con funzionalità per:
